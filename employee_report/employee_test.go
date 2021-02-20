@@ -30,3 +30,15 @@ func TestEmployeesShouldSortedByName(t *testing.T) {
 		currentChar = preChar
 	}
 }
+
+func TestEmployeesShouldSortedByNameInDescend(t *testing.T) {
+	employees := GetAllEmployeesInDescend()
+	var currentChar byte
+	for _, emp := range employees {
+		preChar := emp.Name[0]
+		if currentChar != 0 && preChar > currentChar {
+			t.Errorf("Catch not ordered employee, Name:%s.", emp.Name)
+		}
+		currentChar = preChar
+	}
+}
